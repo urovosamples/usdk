@@ -1,0 +1,44 @@
+//发布到私有服务器maven仓库
+apply plugin: 'maven'
+//生成文档注释
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath = files(android.bootClasspath)
+    destinationDir = file("../javadoc/")
+    options.encoding = "utf-8"
+    options.charSet = "utf-8"
+    failOnError false
+}
+//将文档打包成jar
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+//打包main目录下代码和资源的 task
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+//配置需要上传到maven仓库的文件
+/*artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}*/
+//是一个发布类库到中央仓库的Task，我们需要为它指定本地仓库路径以及类库的一些信息
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //指定maven仓库url
+            /*repository(url: "http://localhost:8081/nexus/content/repositories/releases/") {
+                //nexus登录默认用户名和密码
+                authentication(userName:"admin", password: "admin123")
+            }*/
+            // 这里是配置我们maven库需要的pom.xml文件的各个内容
+            pom.project {
+                groupId  "com.ubx.usdk"// 唯一标识（通常为模块包名，也可以任意）
+                artifactId "usdk-openapi" // 项目名称（通常为类库模块名称，也可以任意）
+                version "4.1.0326" // 版本号
+            }
+        }
+    }
+}
