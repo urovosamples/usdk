@@ -1,6 +1,5 @@
 
-##This repository contains all the samples files for Urovo Android Smart POS Payment Terminal;Handheld Data Terminal, including the revision history.
-##Need more information about getting started with Urovo Android device? Check the [official docs][getting-started].
+##下拉刷新第三方框架
 
 > 如何使用SDK依赖项目
 
@@ -19,6 +18,6 @@ allprojects {
 ~~~JAVA
 
 dependencies {
-    implementation 'com.github.urovosamples:usdk:4.1.0'
+    implementation 'com.github.Airomantic:RefreshSDK:v1.0.0'
 }
 ~~~

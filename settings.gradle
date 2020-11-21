@@ -1,2 +1,3 @@
-include ':app', ':usdklibrary'
-rootProject.name='USDKJitPack'
+include ':usdklibrary'
+include ':app'
+rootProject.name = "USDK_lib"

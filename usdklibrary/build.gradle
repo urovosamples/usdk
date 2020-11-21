@@ -1,23 +1,20 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
+    compileSdkVersion Integer.valueOf(compile_sdk_version)
 
     defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 29
-        versionCode 410
-        versionName "4.1.0_V20201119"
+        minSdkVersion Integer.valueOf(min_sdk_version)
+        targetSdkVersion Integer.valueOf(target_sdk_version)
+        versionCode Integer.valueOf(version_code)
+        versionName version_name
 
-        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -25,8 +22,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "$support_group:appcompat-v7:$support_version"
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    //compileOnly是编译的时候不会报错，打包的时候不会把recyclerview依赖给引用进来
+    //compileOnly "$support_group:recyclerview-v7:$support_version"
+    //这样才能将recyclerview的源码打进apk里面
+    implementation "$support_group:recyclerview-v7:$support_version"
     implementation files('libs/platform_sdk_v4.1.0326.jar')
 }
-apply from: rootProject.file('usdklibrary/gradle-mvn-push.gradle')
