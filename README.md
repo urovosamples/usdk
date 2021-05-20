@@ -19,6 +19,6 @@ allprojects {
 ~~~JAVA
 
 dependencies {
-    implementation 'com.github.urovosamples:usdk:4.1.3'
+    implementation 'com.github.urovosamples:usdk:4.1.4'
 }
 ~~~
