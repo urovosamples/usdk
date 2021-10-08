@@ -22,11 +22,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "$support_group:appcompat-v7:$support_version"
+    //implementation "$support_group:appcompat-v7:$support_version"
 
     //compileOnly是编译的时候不会报错，打包的时候不会把recyclerview依赖给引用进来
     //compileOnly "$support_group:recyclerview-v7:$support_version"
     //这样才能将recyclerview的源码打进apk里面
-    implementation "$support_group:recyclerview-v7:$support_version"
+    //implementation "$support_group:recyclerview-v7:$support_version"
     implementation files('libs/platform_sdk_v4.2.0520.jar')
 }
