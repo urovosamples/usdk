@@ -28,5 +28,5 @@ dependencies {
     //compileOnly "$support_group:recyclerview-v7:$support_version"
     //这样才能将recyclerview的源码打进apk里面
     //implementation "$support_group:recyclerview-v7:$support_version"
-    implementation files('libs/platform_sdk_v4.2.0520.jar')
+    implementation files('libs/ScannerSDK.jar')
 }
